@@ -43,6 +43,73 @@ def create_user_tag(token_value,tag_name):
     return response
 
 
+def delete_user_tag(token_value, tag_id):
+    api_url = local_config.hosts + '/cgi-bin/tags/delete'
+    get_param_data = {
+        'access_token': token_value
+    }
+    data_info = {
+        "tag": {"name": tag_id}
+    }
+    header_info = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.post(url=api_url,
+                             data=data_info,
+                             params=get_param_data,
+                             headers=header_info)
+    return response
+
+def update_user_tag(token_value, tag_id,tag_name):
+    api_url = local_config.hosts + '/cgi-bin/tags/update'
+    get_param_data = {
+        'access_token': token_value
+    }
+    data_info = {
+        "tag": {
+            "id" : tag_id,
+            "name": tag_name
+        }
+    }
+    header_info = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.post(url=api_url,
+
+                             data=data_info,
+                             params=get_param_data,
+                             headers=header_info)
+    return response
+
+
+def selete_user_tag(token_value):
+    api_url = local_config.hosts+'/cgi-bin/tags/get'
+    get_param_data = {
+        'access_token': token_value
+    }
+    response = requests.get(url= api_url,
+                            params=get_param_data)
+    return response
+
+def set_user_mark(token_value, openid,remark):
+    api_url = local_config.hosts + '/cgi-bin/user/info/updateremark'
+    get_param_data = {
+        'access_token': token_value
+    }
+    data_info = {
+        "tag": {
+            "openid" : openid,
+            "remark": remark
+        }
+    }
+    header_info = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.post(url=api_url,
+                             data=data_info,
+                             params=get_param_data,
+                             headers=header_info)
+    return response
 
 if __name__=='__main__':
     unittest.main()

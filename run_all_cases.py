@@ -6,8 +6,8 @@
 import os
 import time
 import unittest
-from utils.config_utils import local_config
 import HTMLTestRunner
+from utils.config_utils import local_config
 
 def get_testsuite(self):
     discover = unittest.defaultTestLoader.discover(start_dir='./testcases',
@@ -30,7 +30,9 @@ runner.run(get_testsuite)
 
 
 if __name__ == '__main__':
-    unittest.main()
+    runner=unittest.TextTestRunner()
+    runner.run(get_testsuite())
+
 
 
 

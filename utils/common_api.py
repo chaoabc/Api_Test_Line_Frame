@@ -111,6 +111,43 @@ def set_user_mark(token_value, openid,remark):
                              headers=header_info)
     return response
 
+
+def get_user_massage(token_value,openid,lang):
+    api_url = local_config.hosts+'/cgi-bin/user/info'
+    get_param_data = {
+        'access_token': token_value,
+        'openid': openid,
+        'lang': lang
+
+    }
+    response = requests.get(url= api_url,
+                            params=get_param_data)
+    return response
+
+
+
+def get_p_user_massage(token_value,openid1,lang1,openid2,lang2):
+    api_url = local_config.hosts+'/cgi-bin/user/info'
+    get_param_data = {
+        'access_token': token_value
+    }
+    data_info ={"user_list": [
+                {
+                    "openid": openid1,
+                    "lang": lang1
+                },
+                {
+                    "openid": openid2,
+                    "lang": lang2
+                }
+            ]
+    }
+
+    response = requests.post(url= api_url,
+                             data=data_info,
+                             params=get_param_data)
+    return response
+
 if __name__=='__main__':
     unittest.main()
 

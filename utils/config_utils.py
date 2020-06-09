@@ -2,7 +2,7 @@ import os
 import configparser
 
 current_dir = os.path.abspath(os.path.dirname(__file__))
-config_path = os.path.join(current_dir, 'config',"config.ini")
+config_path = os.path.join(current_dir,'..', 'config',"conf.ini")
 
 class ConfigUtils(object):
     def __init__(self,path=config_path):

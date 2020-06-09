@@ -21,7 +21,7 @@ def get_access_token(grant_type,appid,secret):
                             params=get_param_data)
     return response
 
-def get_access_token_value(self):
+def get_access_token_value():
     response_obj=get_access_token('client_credential','wx116dfe67cf36b5db','4fa8e58c98667a8f5cdb1f397d0290d1')
     return response_obj.json()['access_token']
 
